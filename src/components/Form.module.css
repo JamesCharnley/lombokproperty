@@ -1,0 +1,20 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form_field{
+    display: flex;
+    justify-content: space-between;
+}
+.form_label{
+    width: 45%;
+    text-align: left;
+}
+.form_input{
+    width: 45%;
+}
+.center_button{
+    display: flex;
+    justify-content: space-around;
+}

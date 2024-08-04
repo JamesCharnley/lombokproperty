@@ -1,0 +1,13 @@
+.title{
+    width: 75%;
+    text-align: center;
+    color: ghostwhite;
+    font-size: 75px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

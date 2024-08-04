@@ -1,0 +1,17 @@
+.container{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+}
+.text_section{
+    width: 45%;
+}
+.title{
+    font-size: 26px;
+    font-family: nexa_boldregular, Helvetica, Arial, sans-serif !important;
+}
+.paragraph{
+    font-size: 20px;
+}
