@@ -1,4 +1,5 @@
 .container{
+    height: 100vh;
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -9,7 +10,11 @@
     width: 45%;
 }
 .title{
-    font-size: 26px;
+    padding: 0;
+    margin: 0;
+    font-size: 42px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
     font-family: nexa_boldregular, Helvetica, Arial, sans-serif !important;
 }
 .paragraph{
