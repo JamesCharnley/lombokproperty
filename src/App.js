@@ -1,7 +1,7 @@
 
 import './App.css';
+import Enquire from './components/Enquire';
 import HeaderImage from './components/HeaderImage';
-import InfoForm from './components/InfoForm';
 import InfoSection from './components/InfoSection';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div style={{width: "100vw"}}>
       <HeaderImage></HeaderImage>
       <div style={{height: "100px"}}></div>
-      <InfoSection imageSide={"right"} imageUrl={"bluemonkeypalms.jpg"} title={"welcome"}>
+      <InfoSection imageSide={"right"} imageUrl={"meangbeach.jpg"} title={"welcome"}>
         Welcome to Lombok Land Ventures, your trusted guide to investing in the stunning island of Lombok, Indonesia.<br/><br/>
          Whether you're a first-time investor or looking to expand your portfolio, our dedicated team is here to help 
          you navigate the process of buying land in this tropical paradise.<br/><br/> With our expertise and local insights, 
@@ -23,13 +23,9 @@ function App() {
          By working with us, you can secure prime land at competitive prices, maximizing your investment potential and supporting the local community.
         </InfoSection>
 
+      <Enquire></Enquire>
 
-
-      <div style={{width: "40%", marginLeft: "auto", marginRight: "auto"}}>
-        <h3>Get started</h3>
-        <p>fill out the form below and we will send you some options</p>
-      <InfoForm />
-      </div>
+      
     </div>
   );
 }

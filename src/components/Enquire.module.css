@@ -1,0 +1,21 @@
+.container{
+    width: 100%;
+}
+.button_container{
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+.enquire_button{
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    padding: 10px;
+    border-radius: 10px;
+    border-color: black;
+    background-color: ghostwhite;
+    font-family: nexa_boldregular, Helvetica, Arial, sans-serif !important;
+    margin-left: auto;
+    margin-right:auto;
+}
