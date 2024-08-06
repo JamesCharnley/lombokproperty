@@ -1,5 +1,6 @@
 
 import './App.css';
+import AboutSection from './components/AboutSection';
 import Enquire from './components/Enquire';
 import HeaderImage from './components/HeaderImage';
 import InfoSection from './components/InfoSection';
@@ -29,6 +30,8 @@ function App() {
         </InfoSection>
 
       <Enquire></Enquire>
+
+      <AboutSection/>
 
       
     </div>
