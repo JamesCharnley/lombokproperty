@@ -8,7 +8,7 @@ export default function InfoSection({imageSide = "left", imageUrl, title, childr
             <BackgroundImage imageUrl={imageUrl} width={"45%"} height={"500px"}/>
             <div className={styles.text_section}>
                 <h3 className={styles.title}>{title}</h3>
-                <p className={styles.paragraph}>{children}</p>
+                {children}
             </div>
         </div>
         );
@@ -17,7 +17,7 @@ export default function InfoSection({imageSide = "left", imageUrl, title, childr
         <div className={styles.container}>
             <div className={styles.text_section}>
                 <h3 className={styles.title}>{title}</h3>
-                <p className={styles.paragraph}>{children}</p>
+                {children}
             </div>
             <BackgroundImage imageUrl={imageUrl} width={"45%"} height={"500px"}/>
         </div>
