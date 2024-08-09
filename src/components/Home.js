@@ -1,8 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import Enquire from './Enquire';
 import HeaderImage from './HeaderImage';
-import InformationPage from './InformationPage';
 import InfoSection from './InfoSection';
 import styles from './Home.module.css';
 

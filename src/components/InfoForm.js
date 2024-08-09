@@ -34,8 +34,9 @@ function InfoForm(){
     
     const [selectedInterest, setSelectedInterest] = useState(null);
     function handleSelectedInterest(selected){
-        setSelectedInterest(selected);
-        console.log(selected);
+        if(selectedInterest !== selected){
+            setSelectedInterest(selected);
+        }
     }
 
     return (
