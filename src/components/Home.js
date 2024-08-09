@@ -34,7 +34,7 @@ export default function Home(){
             Our insights enable you to make informed decisions, ensuring your investment aligns with the dynamic opportunities Lombok has to offer as it becomes an increasingly popular destination.</p>
             </InfoSection>
     
-          {/*<Enquire></Enquire>*/}
+          
         </div>
       );
 }
