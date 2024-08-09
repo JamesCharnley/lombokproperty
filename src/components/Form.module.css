@@ -1,7 +1,8 @@
 .form{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    padding-top: 25px;
 }
 .form_field{
     display: flex;
@@ -10,11 +11,30 @@
 .form_label{
     width: 45%;
     text-align: left;
+    font-size: 18px;
 }
 .form_input{
     width: 45%;
+    height: 20px;
+}
+.option_field{
+    width: 45%;
+    height: 20px;   
 }
 .center_button{
     display: flex;
     justify-content: space-around;
+}
+.button_container{
+    display: flex;
+    justify-content: center;
+}
+.next_button{
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: rgb(59, 205, 124);
+    color: white;
+    border-color: transparent;
+    padding-left: 20px;
+    padding-right: 20px;
 }
