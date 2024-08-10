@@ -13,7 +13,7 @@ const fadeImages = [
       caption: 'Second Slide'
     },
     {
-      url: '/selonglandscape.jpg',
+      url: '/selongcows.jpg',
       caption: 'Third Slide'
     },
     {
