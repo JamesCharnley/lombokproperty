@@ -2,13 +2,20 @@ import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 import styles from './Form.module.css';
 import SingleSelectCheckbox from './SingleSelectCheckbox';
+import ReCAPTCHA from "react-google-recaptcha";
 
 function InfoForm(){
     const form = useRef();
+    const refCaptcha = useRef();
 
     function sendEmail(e){
         e.preventDefault();
-        
+        const token = refCaptcha.current.getValue();
+
+        if(token === undefined){
+            console.log("token undefined");
+            return;
+        }
     emailjs
       .sendForm('service_07zw3r2', 'template_ay9huah', form.current, {
         publicKey: 'qcSq9y5XR8GHZNTJn',
@@ -39,12 +46,17 @@ function InfoForm(){
         }
     }
 
+
     return (
         <div className={styles.form_container}>
             {!isEnquiring ? (<div className={styles.button_container}>
                 <button className={styles.enquire_button} onClick={() => handleStartEnquire(true)}>Enquire Now</button>
             </div>) :
             (<form ref={form} onSubmit={sendEmail} className={styles.form}>
+                <ReCAPTCHA
+                    sitekey={"6LewrCQqAAAAABALtRifcblqZdKwuHpTJANZlLl6"}
+                    ref={refCaptcha}
+                    />
                 {formSectionIndex === 0 ? 
                 <><div className={styles.form_field}>
                     <label className={styles.form_label}>Name</label>
@@ -92,10 +104,10 @@ function InfoForm(){
                         <option className={styles.option_field} value="developer">build a business</option>
                         <option className={styles.option_field} value="permanent">permanent</option>
                     </select>
-                </div>
+                </div>*/}
                 <div className={styles.center_button}>
                     <input type="submit" value="Send" />
-                </div>*/}
+                </div>
               
             </form>)}
             

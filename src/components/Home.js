@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import HeaderImage from './HeaderImage';
 import InfoSection from './InfoSection';
 import styles from './Home.module.css';
+import Enquire from './Enquire';
 
 export default function Home(){
+
+
     return (
         <div style={{width: "100vw"}}>
           <HeaderImage></HeaderImage>
@@ -31,7 +34,7 @@ export default function Home(){
             By guiding you to visit strategic locations, from emerging tourist hotspots to untouched regions poised for growth, we help you envision how these areas will evolve as tourism flourishes.<br/><br/>
             Our insights enable you to make informed decisions, ensuring your investment aligns with the dynamic opportunities Lombok has to offer as it becomes an increasingly popular destination.</p>
             </InfoSection>
-    
+            <Enquire></Enquire>
           
         </div>
       );
