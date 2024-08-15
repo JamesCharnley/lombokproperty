@@ -2,7 +2,10 @@ import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 import styles from './Form.module.css';
 import SingleSelectCheckbox from './SingleSelectCheckbox';
-import ReCAPTCHA from "react-google-recaptcha";
+import {
+    GoogleReCaptchaProvider,
+    GoogleReCaptcha
+  } from 'react-google-recaptcha-v3';
 
 function InfoForm(){
     const form = useRef();
@@ -10,9 +13,9 @@ function InfoForm(){
 
     function sendEmail(e){
         e.preventDefault();
-        const token = refCaptcha.current.getValue();
 
-        if(token === undefined){
+
+        if(captchaToken === undefined){
             console.log("token undefined");
             return;
         }
@@ -46,6 +49,7 @@ function InfoForm(){
         }
     }
 
+    const [captchaToken, setCaptchaToken] = useState(null);
 
     return (
         <div className={styles.form_container}>
@@ -53,10 +57,10 @@ function InfoForm(){
                 <button className={styles.enquire_button} onClick={() => handleStartEnquire(true)}>Enquire Now</button>
             </div>) :
             (<form ref={form} onSubmit={sendEmail} className={styles.form}>
-                <ReCAPTCHA
-                    sitekey={"6LewrCQqAAAAABALtRifcblqZdKwuHpTJANZlLl6"}
-                    ref={refCaptcha}
-                    />
+                <GoogleReCaptchaProvider reCaptchaKey="6LewrCQqAAAAABALtRifcblqZdKwuHpTJANZlLl6">
+                    <GoogleReCaptcha ref={refCaptcha} onVerify={(token) => setCaptchaToken(token)} />
+                </GoogleReCaptchaProvider>
+                
                 {formSectionIndex === 0 ? 
                 <><div className={styles.form_field}>
                     <label className={styles.form_label}>Name</label>
