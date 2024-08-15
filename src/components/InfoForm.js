@@ -1,24 +1,17 @@
 import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './Form.module.css';
 import SingleSelectCheckbox from './SingleSelectCheckbox';
 import {
-    GoogleReCaptchaProvider,
-    GoogleReCaptcha
+    useGoogleReCaptcha
   } from 'react-google-recaptcha-v3';
 
 function InfoForm(){
     const form = useRef();
-    const refCaptcha = useRef();
 
     function sendEmail(e){
         e.preventDefault();
 
-
-        if(captchaToken === undefined){
-            console.log("token undefined");
-            return;
-        }
     emailjs
       .sendForm('service_07zw3r2', 'template_ay9huah', form.current, {
         publicKey: 'qcSq9y5XR8GHZNTJn',
@@ -49,7 +42,28 @@ function InfoForm(){
         }
     }
 
-    const [captchaToken, setCaptchaToken] = useState(null);
+        const { executeRecaptcha } = useGoogleReCaptcha();
+      
+        // Create an event handler so you can call the verification on button click event or form submit
+        const handleReCaptchaVerify = useCallback(async () => {
+          if (!executeRecaptcha) {
+            console.log('Execute recaptcha not yet available');
+            return;
+          }
+      
+          const token = await executeRecaptcha('yourAction');
+          if(token === undefined){
+            console.log("token undefined");
+          }else{
+            console.log("token valid");
+          }
+          // Do whatever you want with the token
+        }, [executeRecaptcha]);
+      
+        // You can use useEffect to trigger the verification as soon as the component being loaded
+        useEffect(() => {
+          handleReCaptchaVerify();
+        }, [handleReCaptchaVerify]);
 
     return (
         <div className={styles.form_container}>
@@ -57,9 +71,7 @@ function InfoForm(){
                 <button className={styles.enquire_button} onClick={() => handleStartEnquire(true)}>Enquire Now</button>
             </div>) :
             (<form ref={form} onSubmit={sendEmail} className={styles.form}>
-                <GoogleReCaptchaProvider reCaptchaKey="6LewrCQqAAAAABALtRifcblqZdKwuHpTJANZlLl6">
-                    <GoogleReCaptcha ref={refCaptcha} onVerify={(token) => setCaptchaToken(token)} />
-                </GoogleReCaptchaProvider>
+                
                 
                 {formSectionIndex === 0 ? 
                 <><div className={styles.form_field}>
@@ -110,7 +122,7 @@ function InfoForm(){
                     </select>
                 </div>*/}
                 <div className={styles.center_button}>
-                    <input type="submit" value="Send" />
+                    <input onClick={handleReCaptchaVerify} type="button" value="Send" />
                 </div>
               
             </form>)}
