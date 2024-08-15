@@ -13,14 +13,17 @@ function InfoForm(){
         
         const token = refCaptcha.current.getValue();
 
-        
+        const params = {
+            ...form.current,
+            "g-recaptcha-response": token,
+          };
         if(token === undefined){
             console.log("token undefined");
             return;
         }
 
     emailjs
-      .sendForm('service_07zw3r2', 'template_ay9huah', form.current, {
+      .sendForm('service_07zw3r2', 'template_ay9huah', params, {
         publicKey: 'qcSq9y5XR8GHZNTJn',
       })
       .then(
