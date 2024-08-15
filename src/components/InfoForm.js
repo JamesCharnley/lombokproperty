@@ -3,7 +3,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './Form.module.css';
 import SingleSelectCheckbox from './SingleSelectCheckbox';
 import {
-    useGoogleReCaptcha
+    useGoogleReCaptcha,
+    GoogleReCaptcha
   } from 'react-google-recaptcha-v3';
 
 function InfoForm(){
@@ -41,7 +42,7 @@ function InfoForm(){
             setSelectedInterest(selected);
         }
     }
-
+    const [ttoken, setToken] = useState();
         const { executeRecaptcha } = useGoogleReCaptcha();
       
         // Create an event handler so you can call the verification on button click event or form submit
@@ -57,13 +58,18 @@ function InfoForm(){
           }else{
             console.log("token valid");
           }
+          if(ttoken === undefined){
+            console.log("ttoken undefined");
+          }
           // Do whatever you want with the token
-        }, [executeRecaptcha]);
+        }, [executeRecaptcha, ttoken]);
       
         // You can use useEffect to trigger the verification as soon as the component being loaded
         useEffect(() => {
           handleReCaptchaVerify();
         }, [handleReCaptchaVerify]);
+
+        
 
     return (
         <div className={styles.form_container}>
@@ -121,6 +127,11 @@ function InfoForm(){
                         <option className={styles.option_field} value="permanent">permanent</option>
                     </select>
                 </div>*/}
+                <GoogleReCaptcha
+        onVerify={tttoken => {
+          setToken(tttoken);
+        }}
+      />
                 <div className={styles.center_button}>
                     <input onClick={handleReCaptchaVerify} type="button" value="Send" />
                 </div>
