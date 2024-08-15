@@ -13,6 +13,7 @@ function InfoForm(){
         
         const token = refCaptcha.current.getValue();
 
+        
         if(token === undefined){
             console.log("token undefined");
             return;
