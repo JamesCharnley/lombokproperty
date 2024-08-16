@@ -8,13 +8,18 @@ function InfoForm(){
     const form = useRef();
     const refCaptcha = useRef();
 
+    const [formValues, setFormValues] = useState({
+        user_name: "",
+        user_email: "",
+    });
+
     function sendEmail(e){
         e.preventDefault();
         
         const token = refCaptcha.current.getValue();
 
         const params = {
-            ...form.current,
+            ...formValues,
             "g-recaptcha-response": token,
           };
         if(token === undefined){
@@ -53,30 +58,80 @@ function InfoForm(){
     }   
 
     return (
-        <div className={styles.form_container}>
-            {!isEnquiring ? (<div className={styles.button_container}>
-                <button className={styles.enquire_button} onClick={() => handleStartEnquire(true)}>Enquire Now</button>
-            </div>) :
-            (<form ref={form} onSubmit={sendEmail} className={styles.form}>
-                
-                
-                {formSectionIndex === 0 ? 
-                <><div className={styles.form_field}>
-                    <label className={styles.form_label}>Name</label>
-                    <input className={styles.form_input} type="text" name="user_name" />
+      <div className={styles.form_container}>
+        {!isEnquiring ? (
+          <div className={styles.button_container}>
+            <button
+              className={styles.enquire_button}
+              onClick={() => handleStartEnquire(true)}
+            >
+              Enquire Now
+            </button>
+          </div>
+        ) : (
+          <form ref={form} onSubmit={sendEmail} className={styles.form}>
+            {formSectionIndex === 0 ? (
+              <>
+                <div className={styles.form_field}>
+                  <label className={styles.form_label}>Name</label>
+                  <input
+                    className={styles.form_input}
+                    type="text"
+                    name="user_name"
+                    value={formValues.user_name}
+                    onChange={(e) =>
+                      setFormValues({
+                        ...formValues,
+                        user_name: e.target.value,
+                      })
+                    }
+                  />
                 </div>
                 <div className={styles.form_field}>
-                    <label className={styles.form_label}>Email</label>
-                    <input className={styles.form_input} type="email" name="user_email" />
+                  <label className={styles.form_label}>Email</label>
+                  <input
+                    className={styles.form_input}
+                    type="email"
+                    name="user_email"
+                    value={formValues.user_email}
+                    onChange={(e) =>
+                      setFormValues({
+                        ...formValues,
+                        user_email: e.target.value,
+                      })
+                    }
+                  />
                 </div>
                 <div className={styles.form_field}>
-                    <label className={styles.form_label}>Country of residence</label>
-                    <input className={styles.form_input} type="text" name="origin" />
+                  <label className={styles.form_label}>
+                    Country of residence
+                  </label>
+                  <input
+                    className={styles.form_input}
+                    type="text"
+                    name="origin"
+                  />
                 </div>
-                <SingleSelectCheckbox updateSelected={handleSelectedInterest} options={["I want to learn more about the process of buying property in Lombok as a foreigner", "I want to create a company in Indonesia so I can purchase property in Lombok", "I have created a company in Indonesia and now I want to purchase property in Lombok"]}/>
-                <div className={styles.button_container}><button type='button' className={styles.next_button} onClick={() => handleChangeFormSectionIndex(1)}>Next</button>
-                </div></> : null}
-                {/*<div className={styles.form_field}>
+                <SingleSelectCheckbox
+                  updateSelected={handleSelectedInterest}
+                  options={[
+                    "I want to learn more about the process of buying property in Lombok as a foreigner",
+                    "I want to create a company in Indonesia so I can purchase property in Lombok",
+                    "I have created a company in Indonesia and now I want to purchase property in Lombok",
+                  ]}
+                />
+                <div className={styles.button_container}>
+                  <button
+                    type="button"
+                    className={styles.next_button}
+                    onClick={() => handleChangeFormSectionIndex(1)}
+                  >
+                    Next
+                  </button>
+                </div>
+              </>
+            ) : null}
+            {/*<div className={styles.form_field}>
                     <label className={styles.form_label}>Budget</label>
                     <select className={styles.form_input} name="budget">
                         <option className={styles.option_field} value="less than 100k">less than $100,000 USD</option>
@@ -108,20 +163,17 @@ function InfoForm(){
                         <option className={styles.option_field} value="permanent">permanent</option>
                     </select>
                 </div>*/}
-                <ReCAPTCHA
-                    sitekey={"6Lc_bScqAAAAAFHbQB7s7QayBTTLZ2_Kx1yVAKh3"}
-                    ref={refCaptcha}
-                    />
-                <div className={styles.center_button}>
-                    <input type="submit" value="Send" />
-                </div>
-              
-            </form>)}
-            
-            
-        </div>
-        
-      );
+            <ReCAPTCHA
+              sitekey={"6Lc_bScqAAAAAFHbQB7s7QayBTTLZ2_Kx1yVAKh3"}
+              ref={refCaptcha}
+            />
+            <div className={styles.center_button}>
+              <input type="submit" value="Send" />
+            </div>
+          </form>
+        )}
+      </div>
+    );
 }
 
 export default InfoForm;
