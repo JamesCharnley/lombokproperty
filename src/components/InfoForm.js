@@ -28,7 +28,7 @@ function InfoForm(){
         }
 
     emailjs
-      .sendForm('service_07zw3r2', 'template_ay9huah', params, {
+      .send('service_07zw3r2', 'template_ay9huah', params, {
         publicKey: 'qcSq9y5XR8GHZNTJn',
       })
       .then(
