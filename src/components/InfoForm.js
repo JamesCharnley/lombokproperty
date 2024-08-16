@@ -164,7 +164,7 @@ function InfoForm(){
                     </select>
                 </div>*/}
             <ReCAPTCHA
-              sitekey={"6Lc_bScqAAAAAFHbQB7s7QayBTTLZ2_Kx1yVAKh3"}
+              sitekey={"6LfD7ScqAAAAACbnUnhZ0kD2D_2MslVy0cnl2uJf"}
               ref={refCaptcha}
             />
             <div className={styles.center_button}>
