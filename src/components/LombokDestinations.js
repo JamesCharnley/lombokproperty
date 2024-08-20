@@ -2,6 +2,7 @@ import DestinationSection from './DestinationSection';
 import InfoSection from './InfoSection';
 import styles from './LombokDestinations.module.css';
 import 'react-slideshow-image/dist/styles.css'
+import { NavBar } from './NavBar';
 
 const fadeImagesSelong = [
     {
@@ -58,6 +59,7 @@ const fadeImagesSelong = [
 export default function LombokDestinations(){
     return (
       <div className={styles.container}>
+        <NavBar />
         <InfoSection
           imageUrl={"/selonglandscape.jpg"}
           imageSide="right"

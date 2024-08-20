@@ -4,12 +4,14 @@ import HeaderImage from './HeaderImage';
 import InfoSection from './InfoSection';
 import styles from './Home.module.css';
 import LinkButton from './LinkButton';
+import { NavBar } from './NavBar';
 
 export default function Home(){
 
 
     return (
         <div style={{width: "100vw"}}>
+          <NavBar/>
           <HeaderImage></HeaderImage>
           <div style={{height: "100px"}}></div>
           <InfoSection imageSide={"right"} imageUrl={"meangbeach.jpg"} title={"welcome"}>

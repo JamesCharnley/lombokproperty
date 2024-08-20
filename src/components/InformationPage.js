@@ -3,6 +3,7 @@ import styles from './InformationPage.module.css';
 import LegalRequirements from './LegalRequirements';
 import LocalRegulations from './LocalRegulations';
 import { useEffect, useRef } from 'react';
+import { NavBar } from './NavBar';
 
 export default function InformationPage(){
 
@@ -23,6 +24,7 @@ export default function InformationPage(){
     }, [section])
     return (
         <div className={styles.container}>
+            <NavBar/>
             <div ref={legalRef}>
                 <LegalRequirements id="legal"/>
             </div>
